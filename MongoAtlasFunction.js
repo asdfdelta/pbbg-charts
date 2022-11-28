@@ -68,7 +68,12 @@ exports = async function() {
 
 
 async function getRemoteHost(resource) {
-  const response = await context.http.get({ url: resource });
+  const response = await context.http.get({ 
+    url: resource, 
+    headers: {
+      "Accept": ["application/json"]
+    }
+  });
   if (response.statusCode != 200) {
     return false;
   }
